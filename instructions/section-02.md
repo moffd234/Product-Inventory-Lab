@@ -23,7 +23,7 @@ A sneaker item from inventory
 - name: String
 - brand: String
 - sport: String
-- size: float
+- kitSize: float
 - qty: int
 - price: float
 
@@ -50,7 +50,7 @@ public class Sneaker {
     private String name;
     private String brand;
     private String sport;
-    private int size;
+    private int kitSize;
     private int qty;
     private float price;
 }
@@ -284,10 +284,10 @@ Now it's time to implement the create sneaker logic:
 
 ```java
 // (1)
-public Sneaker create(String name, String brand, String sport, int size, int quantity, float price) {
+public Sneaker create(String name, String brand, String sport, int kitSize, int quantity, float price) {
     
     // (2)
-    Sneaker createdSneaker = new Sneaker(nextId++, name, brand, sport, size, quantity, price);
+    Sneaker createdSneaker = new Sneaker(nextId++, name, brand, sport, kitSize, quantity, price);
     
     // (3)
     inventory.add(createdSneaker);

@@ -64,17 +64,27 @@ public class KitsTest {
 
     @Test
     public void testGetSize() {
-        Size expected = Size.SMALL;
-        Size actual = kit.getSize();
+        KitSize expected = KitSize.SMALL;
+        KitSize actual = kit.getSize();
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testSetSize() {
-        Size expected = Size.MEDIUM;
+        KitSize expected = KitSize.MEDIUM;
 
         kit.setSize(expected);
-        Size actual = kit.getSize();
+        KitSize actual = kit.getSize();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetSize1() {
+        KitSize expected = KitSize.LARGE;
+
+        kit.setSize(expected);
+        KitSize actual = kit.getSize();
 
         Assert.assertEquals(expected, actual);
     }

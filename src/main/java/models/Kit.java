@@ -8,10 +8,10 @@ public class Kit {
     private String team;
     private String brand;
     private String player;
-    private Size size;
+    private KitSize kitSize;
 
     public Kit(){
-        this.size = Size.SMALL;
+        this.kitSize = KitSize.SMALL;
     }
 
     public int getId() {
@@ -70,16 +70,11 @@ public class Kit {
         this.player = player;
     }
 
-    public Size getSize() {
-        return size;
+    public KitSize getSize() {
+        return kitSize;
     }
 
-    public void setSize(Size size) {
-        this.size = size;
+    public void setSize(KitSize kitSize) {
+        this.kitSize = kitSize;
     }
-}
-enum Size{
-    SMALL,
-    MEDIUM,
-    LARGE;
 }
