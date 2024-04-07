@@ -1,6 +1,6 @@
 package models;
 
-enum KitSize {
+public enum KitSize {
     SMALL,
     MEDIUM,
     LARGE;
