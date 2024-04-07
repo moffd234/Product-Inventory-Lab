@@ -10,6 +10,20 @@ public class KitsTest {
     public void setup(){
         kit = new Kit(0, 10, 1, 100.00, "Philadelphia Union",
         "Nike", "Gazdag", KitSize.LARGE);
+
+
+    }
+
+    @Test
+    public void testConstructor() {
+        Assert.assertEquals(0, kit.getId());
+        Assert.assertEquals(10, kit.getKitNum());
+        Assert.assertEquals(1, kit.getQuantity());
+        Assert.assertEquals((Double) 100.00, (Double) kit.getPrice());
+        Assert.assertEquals("Philadelphia Union", kit.getTeam());
+        Assert.assertEquals("Nike", kit.getBrand());
+        Assert.assertEquals("Gazdag", kit.getPlayer());
+        Assert.assertEquals(KitSize.LARGE, kit.getSize());
     }
 
     @Test

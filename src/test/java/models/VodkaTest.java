@@ -13,6 +13,13 @@ public class VodkaTest {
     }
 
     @Test
+    public void testConstructor() {
+        Assert.assertEquals("Grey Goose", vodka.getBrand());
+        Assert.assertEquals(100, vodka.getProof());
+        Assert.assertEquals(BottleSize.HANDLE, vodka.getBottleSize());
+    }
+
+    @Test
     public void testGetBrand() {
         String expected = "Grey Goose";
         String actual = vodka.getBrand();
