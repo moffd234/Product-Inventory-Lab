@@ -9,14 +9,12 @@ public class VodkaTest {
 
     @Before
     public void setup() {
-        vodka = new Vodka();
+        vodka = new Vodka("Grey Goose", 100, BottleSize.HANDLE);
     }
 
     @Test
     public void testGetBrand() {
-        String expected = "Absolut";
-
-        vodka.setBrand(expected);
+        String expected = "Grey Goose";
         String actual = vodka.getBrand();
 
         Assert.assertEquals(expected, actual);
@@ -24,9 +22,8 @@ public class VodkaTest {
 
     @Test
     public void testGetProof() {
-        int expected = 80;
+        int expected = 100;
 
-        vodka.setProof(expected);
         int actual = vodka.getProof();
 
         Assert.assertEquals(expected, actual);
@@ -34,9 +31,8 @@ public class VodkaTest {
 
     @Test
     public void testGetBottleSize() {
-        BottleSize expected = BottleSize.FIFTH;
+        BottleSize expected = BottleSize.HANDLE;
 
-        vodka.setBottleSize(expected);
         BottleSize actual = vodka.getBottleSize();
 
         Assert.assertEquals(expected, actual);

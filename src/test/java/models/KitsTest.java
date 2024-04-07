@@ -8,7 +8,8 @@ public class KitsTest {
     Kit kit;
     @Before
     public void setup(){
-        kit = new Kit();
+        kit = new Kit(0, 10, 1, 100.00, "Philadelphia Union",
+        "Nike", "Gazdag", KitSize.LARGE);
     }
 
     @Test
@@ -21,7 +22,7 @@ public class KitsTest {
 
     @Test
     public void testGetKitNum(){
-        int expected = 0;
+        int expected = 10;
         int actual = kit.getKitNum();
 
         Assert.assertEquals(expected, actual);
@@ -29,7 +30,7 @@ public class KitsTest {
 
     @Test
     public void testQuantity(){
-        int expected = 0;
+        int expected = 1;
         int actual = kit.getQuantity();
 
         Assert.assertEquals(expected, actual);
@@ -38,7 +39,7 @@ public class KitsTest {
     @Test
     public void testGetPrice() {
 
-        double expected = 0.00;
+        double expected = 100.00;
         double actual = kit.getPrice();
 
         Assert.assertEquals(expected, actual, 0.009);
@@ -46,25 +47,28 @@ public class KitsTest {
 
     @Test
     public void testGetTeam() {
+        String expected = "Philadelphia Union";
         String actual = kit.getTeam();
-        Assert.assertNull(actual);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testGetBrand(){
+        String expected = "Nike";
         String actual = kit.getBrand();
-        Assert.assertNull(actual);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testGetPlayer(){
+        String expected = "Gazdag";
         String actual = kit.getPlayer();
-        Assert.assertNull(actual);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testGetSize() {
-        KitSize expected = KitSize.SMALL;
+        KitSize expected = KitSize.LARGE;
         KitSize actual = kit.getSize();
         Assert.assertEquals(expected, actual);
     }

@@ -5,6 +5,12 @@ public class Vodka {
     private int proof;
     private BottleSize bottleSize;
 
+    public Vodka(String brand, int proof, BottleSize bottleSize) {
+        this.brand = brand;
+        this.proof = proof;
+        this.bottleSize = bottleSize;
+    }
+
     public String getBrand() {
         return brand;
     }

@@ -10,8 +10,16 @@ public class Kit {
     private String player;
     private KitSize kitSize;
 
-    public Kit(){
-        this.kitSize = KitSize.SMALL;
+    public Kit(int id, int kitNum, int quantity, double price, String team,
+               String brand, String player, KitSize kitSize) {
+        this.id = id;
+        this.kitNum = kitNum;
+        this.quantity = quantity;
+        this.price = price;
+        this.team = team;
+        this.brand = brand;
+        this.player = player;
+        this.kitSize = kitSize;
     }
 
     public int getId() {
