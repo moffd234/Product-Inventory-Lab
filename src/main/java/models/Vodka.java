@@ -3,12 +3,19 @@ package models;
 public class Vodka {
     private String brand;
     private int proof;
+    private double price;
     private BottleSize bottleSize;
+    private int quantity;
+    private int id;
 
-    public Vodka(String brand, int proof, BottleSize bottleSize) {
+
+    public Vodka(String brand, int proof, BottleSize bottleSize, double price, int quantity, int id) {
         this.brand = brand;
         this.proof = proof;
         this.bottleSize = bottleSize;
+        this.price = price;
+        this.quantity = quantity;
+        this.id = id;
     }
 
     public String getBrand() {
@@ -33,6 +40,30 @@ public class Vodka {
 
     public void setBottleSize(BottleSize bottleSize) {
         this.bottleSize = bottleSize;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 

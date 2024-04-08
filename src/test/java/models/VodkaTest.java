@@ -9,7 +9,7 @@ public class VodkaTest {
 
     @Before
     public void setup() {
-        vodka = new Vodka("Grey Goose", 100, BottleSize.HANDLE);
+        vodka = new Vodka("Grey Goose", 100, BottleSize.HANDLE, 80.00, 10, 1);
     }
 
     @Test
@@ -74,4 +74,49 @@ public class VodkaTest {
 
         Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void testGetPrice() {
+        double expected = 80.00;
+        double actual = vodka.getPrice();
+        Assert.assertEquals(expected, actual, 0.01);
+    }
+
+    @Test
+    public void testSetPrice() {
+        double expected = 90.50;
+        vodka.setPrice(expected);
+        double actual = vodka.getPrice();
+        Assert.assertEquals(expected, actual, 0.01);
+    }
+
+    @Test
+    public void testGetQuantity() {
+        int expected = 10;
+        int actual = vodka.getQuantity();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetQuantity() {
+        int expected = 15;
+        vodka.setQuantity(expected);
+        int actual = vodka.getQuantity();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetId() {
+        int expected = 1;
+        int actual = vodka.getId();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetId() {
+        int expected = 2;
+        vodka.setId(expected);
+        int actual = vodka.getId();
+        Assert.assertEquals(expected, actual);
+    }
+
 }
