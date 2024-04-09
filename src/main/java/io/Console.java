@@ -1,8 +1,8 @@
 package io;
 
+import models.BottleSize;
 import models.KitSize;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
@@ -77,6 +77,19 @@ public class Console {
             }
         }
         return kitSize;
+    }
+
+    public BottleSize getBottleSize() {
+        BottleSize bottleSize = null;
+        while (bottleSize == null) {
+            try {
+                String bottleSizeInput = getStringInput("Enter bottle size (PINT, FIFTH, LITER, HANDLE): ");
+                bottleSize = BottleSize.valueOf(bottleSizeInput.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid bottle size. Please enter one of PINT, FIFTH, LITER, or HANDLE.");
+            }
+        }
+        return bottleSize;
     }
 
 }

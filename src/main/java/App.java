@@ -1,5 +1,5 @@
 import io.Console;
-import models.Kit;
+import models.BottleSize;
 import models.KitSize;
 import services.KitsService;
 import services.VodkaService;
@@ -62,7 +62,7 @@ public class App {
             handleKitInput();
         }
         else{
-            //handleVodkaInput();
+            handleVodkaInput();
         }
     }
 
@@ -75,11 +75,16 @@ public class App {
         String player = console.getStringInput("Enter the player name");
         KitSize kitSize = console.getKitInput();
         kitsService.create(kitNum, quantity, price, team, brand, player, kitSize);
-        System.out.println(kitsService.getKitsInventory().size());
     }
 
     public void handleVodkaInput(){
-   
+        String brand = console.getStringInput("Enter brand");
+        int proof = console.getIntegerInput("Enter proof");
+        BottleSize bottleSize = console.getBottleSize();
+        double price = console.getDoubleInput("Enter Vodka price");
+        int quantity = console.getIntegerInput("Enter quantity");
+        vodkaService.create(brand, proof, bottleSize, price, quantity);
+        System.out.println(vodkaService.getInventory().size());
     }
 
 
