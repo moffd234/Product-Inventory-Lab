@@ -137,10 +137,8 @@ public class Console {
 
     public void handleReadItems(){
 
-        String input = getStringInput("Are you reading kits, vodka, or both?").toLowerCase();
-        while(!input.equals("kits") && !input.equals("vodka") && !input.equals("both")){
-            input = getStringInput("Are you reading kits, vodka, or both??").toLowerCase();
-        }
+        String input = getKitsOrVodkaString();
+
         if(input.equals("kits")){
             System.out.println(kitsService.toString());
         }
@@ -153,4 +151,61 @@ public class Console {
         }
     }
 
+    public void handleUpdateItems(){
+        populateInventoryVodka();
+        String input = getKitsOrVodkaString();
+
+        if(input.equals("kits")){
+            int id = getIntegerInput("Which ID did you want to update?");
+            if(kitsService.find(id) != null) {
+                int kitNum = getIntegerInput("Enter kit number");
+                double price = getDoubleInput("Enter kit price");
+                int quantity = getIntegerInput("Enter quantity");
+                String team = getStringInput("Enter team");
+                String brand = getStringInput("Enter the brand");
+                String player = getStringInput("Enter the player name");
+                KitSize kitSize = getKitInput();
+                kitsService.create(kitNum, quantity, price, team, brand, player, kitSize, id);
+            }
+            else{
+                System.out.println("There is no kit item with that id");
+            }
+        }
+        if(input.equals("vodka")){
+            int id = getIntegerInput("Which ID did you want to update?");
+            if(vodkaService.find(id) != null) {
+                String brand = getStringInput("Enter brand");
+                int proof = getIntegerInput("Enter proof");
+                BottleSize bottleSize = getBottleSize();
+                double price = getDoubleInput("Enter Vodka price");
+                int quantity = getIntegerInput("Enter quantity");
+                vodkaService.create(brand, proof, bottleSize, price, quantity, id);
+                System.out.println(vodkaService.toString());
+            }
+            else{
+                System.out.println("There is no vodka item with that id");
+            }
+        }
+    }
+
+    public String getKitsOrVodkaString(){
+        String input = getStringInput("Are you updating kits, or vodka").toLowerCase();
+        while(!input.equals("kits") && !input.equals("vodka")){
+            input = getStringInput("Are you updating kits, or vodka").toLowerCase();
+        }
+        return input;
+    }
+
+
+    public void populateInventoryKits(){
+        for(int i = 0; i < 10; i++){
+            kitsService.create(i + 1, i * 10, i * 20,
+                    "Barcelona", "Adidas", "Silva", KitSize.MEDIUM);
+        }
+    }
+    public void populateInventoryVodka(){
+        for(int i = 0; i < 10; i++){
+            vodkaService.create("Smirnoff", i * 18, BottleSize.HANDLE, i * 15, 100);
+        }
+    }
 }

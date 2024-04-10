@@ -17,6 +17,14 @@ public class VodkaService {
         return newVodka;
     }
 
+    public Vodka create(String brand, int proof, BottleSize bottleSize, double price, int quantity, int id) {
+
+        Vodka newVodka = new Vodka(brand, proof, bottleSize, price, quantity, id);
+        inventory.set(id - 1, newVodka);
+
+        return newVodka;
+    }
+
 
     public boolean delete(int id) {
         for(Vodka vodka : inventory){

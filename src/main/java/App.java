@@ -23,22 +23,23 @@ public class App {
             Console.printMainMenu();
             int input = scanner.nextInt();
             switch (input) {
-                case (1):
+                case (1): // Add
                     console.handleAddItems();
                     break;
-                case(2):
+                case(2): // Read
                     console.handleReadItems();
                     break;
-                case(3):
-                    System.out.println("Update");
+                case(3): // Update
+                    console.handleUpdateItems();
+
                     break;
-                case(4):
+                case(4): // Delete
                     System.out.println("Delete");
                     break;
-                case(5):
+                case(5): // Get Reports
                     System.out.println("Get reports");
                     break;
-                case(6):
+                case(6): // Exit
                     exitFlag = true;
                     break;
                 default:

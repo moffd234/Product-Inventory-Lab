@@ -15,6 +15,12 @@ public class KitsService {
         kitsInventory.add(createdKit);
         return createdKit;
     }
+    public Kit create(int kitNum, int quantity, double price, String team,
+                      String brand, String player, KitSize kitSize, int id){
+        Kit createdKit = new Kit(id, kitNum, quantity, price, team, brand, player, kitSize);
+        kitsInventory.set(id - 1, createdKit);
+        return createdKit;
+    }
 
     public ArrayList<Kit> getKitsInventory() {
         return kitsInventory;
