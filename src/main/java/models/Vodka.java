@@ -69,14 +69,13 @@ public class Vodka {
     // Mostly used for testing so far
     @Override
     public String toString() {
-        return "Vodka{" +
-                "brand='" + brand + '\'' +
-                ", proof=" + proof +
-                ", price=" + price +
-                ", bottleSize=" + bottleSize +
-                ", quantity=" + quantity +
-                ", id=" + id +
-                '}';
+        return "Vodka: \n" +
+                "id: " + id + "\n" +
+                "   - brand=" + brand + "\n" +
+                "   - proof=" + proof + "\n" +
+                "   - price=" + price + "\n" +
+                "   - bottleSize=" + bottleSize + "\n" +
+                "   - quantity=" + quantity + "\n\n";
     }
 }
 

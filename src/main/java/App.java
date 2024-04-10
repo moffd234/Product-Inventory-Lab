@@ -27,7 +27,7 @@ public class App {
                     console.handleAddItems();
                     break;
                 case(2):
-                    System.out.println("Read");
+                    console.handleReadItems();
                     break;
                 case(3):
                     System.out.println("Update");

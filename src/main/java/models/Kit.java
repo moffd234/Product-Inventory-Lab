@@ -85,4 +85,17 @@ public class Kit {
     public void setSize(KitSize kitSize) {
         this.kitSize = kitSize;
     }
+
+    @Override
+    public String toString() {
+        return "Kit{" +
+                "id: " + id + "\n" +
+                "   - kitNum=" + kitNum + "\n" +
+                "   - quantity=" + quantity + "\n" +
+                "   - price=" + price + "\n" +
+                "   - team='" + team + '\'' + "\n" +
+                "   - brand='" + brand + '\'' + "\n" +
+                "   - player='" + player + '\'' + "\n" +
+                "   - kitSize=" + kitSize + "\n\n";
+    }
 }

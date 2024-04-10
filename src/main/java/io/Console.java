@@ -135,4 +135,22 @@ public class Console {
         vodkaService.create(brand, proof, bottleSize, price, quantity);
     }
 
+    public void handleReadItems(){
+
+        String input = getStringInput("Are you reading kits, vodka, or both?").toLowerCase();
+        while(!input.equals("kits") && !input.equals("vodka") && !input.equals("both")){
+            input = getStringInput("Are you reading kits, vodka, or both??").toLowerCase();
+        }
+        if(input.equals("kits")){
+            System.out.println(kitsService.toString());
+        }
+        else if(input.equals("vodka")){
+            System.out.println(vodkaService.toString());
+        }
+        else{
+            System.out.println(kitsService.toString());
+            System.out.println(vodkaService.toString());
+        }
+    }
+
 }

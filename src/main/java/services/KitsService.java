@@ -46,4 +46,9 @@ public class KitsService {
         }
         return kits;
     }
+
+    @Override
+    public String toString() {
+        return "" + kitsInventory;
+    }
 }
