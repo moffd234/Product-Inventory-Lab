@@ -23,9 +23,9 @@ public class App {
 
     public void handleInput(){
         Scanner scanner = new Scanner(System.in);
-        Console.printMainMenu();
         boolean exitFlag = false;
         while(!exitFlag){
+            Console.printMainMenu();
             int input = scanner.nextInt();
             switch (input) {
                 case (1):
@@ -59,10 +59,16 @@ public class App {
             input = console.getStringInput("Are you adding kits or vodka?").toLowerCase();
         }
         if(input.equals("kits")){
-            handleKitInput();
+            int numToAdd = console.getIntegerInput("How many would you like to add?");
+            for(int i = 0; i < numToAdd; i++) {
+                handleKitInput();
+            }
         }
         else{
-            handleVodkaInput();
+            int numToAdd = console.getIntegerInput("How many would you like to add?");
+            for(int i = 0; i < numToAdd; i++) {
+                handleVodkaInput();
+            }
         }
     }
 
@@ -84,8 +90,7 @@ public class App {
         double price = console.getDoubleInput("Enter Vodka price");
         int quantity = console.getIntegerInput("Enter quantity");
         vodkaService.create(brand, proof, bottleSize, price, quantity);
-        System.out.println(vodkaService.getInventory().size());
     }
-
+    
 
 }

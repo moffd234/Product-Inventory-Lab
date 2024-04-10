@@ -65,5 +65,18 @@ public class Vodka {
     public void setId(int id) {
         this.id = id;
     }
+
+    // Mostly used for testing so far
+    @Override
+    public String toString() {
+        return "Vodka{" +
+                "brand='" + brand + '\'' +
+                ", proof=" + proof +
+                ", price=" + price +
+                ", bottleSize=" + bottleSize +
+                ", quantity=" + quantity +
+                ", id=" + id +
+                '}';
+    }
 }
 
