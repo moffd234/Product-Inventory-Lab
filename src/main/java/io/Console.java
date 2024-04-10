@@ -104,18 +104,18 @@ public class Console {
         if(input.equals("kits")){
             int numToAdd = getIntegerInput("How many would you like to add?");
             for(int i = 0; i < numToAdd; i++) {
-                handleKitInput();
+                addKit();
             }
         }
         else{
             int numToAdd = getIntegerInput("How many would you like to add?");
             for(int i = 0; i < numToAdd; i++) {
-                handleVodkaInput();
+                addVodka();
             }
         }
     }
 
-    public void handleKitInput(){
+    public void addKit(){
         int kitNum = getIntegerInput("Enter kit number");
         double price = getDoubleInput("Enter kit price");
         int quantity = getIntegerInput("Enter quantity");
@@ -126,7 +126,7 @@ public class Console {
         kitsService.create(kitNum, quantity, price, team, brand, player, kitSize);
     }
 
-    public void handleVodkaInput(){
+    public void addVodka(){
         String brand = getStringInput("Enter brand");
         int proof = getIntegerInput("Enter proof");
         BottleSize bottleSize = getBottleSize();
