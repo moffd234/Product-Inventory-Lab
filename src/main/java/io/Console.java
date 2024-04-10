@@ -2,10 +2,14 @@ package io;
 
 import models.BottleSize;
 import models.KitSize;
+import services.KitsService;
+import services.VodkaService;
 
 import java.util.Scanner;
 
 public class Console {
+    private KitsService kitsService = new KitsService(); // (1)
+    private VodkaService vodkaService = new VodkaService();
     Scanner scanner = new Scanner(System.in);
     public static void printWelcome(){
         System.out.println(
@@ -90,6 +94,45 @@ public class Console {
             }
         }
         return bottleSize;
+    }
+
+    public void handleAddItems(){
+        String input = getStringInput("Are you adding kits or vodka?").toLowerCase();
+        while(!input.equals("kits") && !input.equals("vodka")){
+            input = getStringInput("Are you adding kits or vodka?").toLowerCase();
+        }
+        if(input.equals("kits")){
+            int numToAdd = getIntegerInput("How many would you like to add?");
+            for(int i = 0; i < numToAdd; i++) {
+                handleKitInput();
+            }
+        }
+        else{
+            int numToAdd = getIntegerInput("How many would you like to add?");
+            for(int i = 0; i < numToAdd; i++) {
+                handleVodkaInput();
+            }
+        }
+    }
+
+    public void handleKitInput(){
+        int kitNum = getIntegerInput("Enter kit number");
+        double price = getDoubleInput("Enter kit price");
+        int quantity = getIntegerInput("Enter quantity");
+        String team = getStringInput("Enter team");
+        String brand = getStringInput("Enter the brand");
+        String player = getStringInput("Enter the player name");
+        KitSize kitSize = getKitInput();
+        kitsService.create(kitNum, quantity, price, team, brand, player, kitSize);
+    }
+
+    public void handleVodkaInput(){
+        String brand = getStringInput("Enter brand");
+        int proof = getIntegerInput("Enter proof");
+        BottleSize bottleSize = getBottleSize();
+        double price = getDoubleInput("Enter Vodka price");
+        int quantity = getIntegerInput("Enter quantity");
+        vodkaService.create(brand, proof, bottleSize, price, quantity);
     }
 
 }
