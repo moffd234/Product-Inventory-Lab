@@ -8,8 +8,8 @@ import services.VodkaService;
 import java.util.Scanner;
 
 public class Console {
-    private KitsService kitsService = new KitsService(); // (1)
-    private VodkaService vodkaService = new VodkaService();
+    private final KitsService kitsService = new KitsService(); // (1)
+    private final VodkaService vodkaService = new VodkaService();
     Scanner scanner = new Scanner(System.in);
     public static void printWelcome(){
         System.out.println(
@@ -45,8 +45,7 @@ public class Console {
     public Double getDoubleInput(String prompt, Object... args) {
         String stringInput = getStringInput(prompt, args);
         try {
-            Double doubleInput = Double.parseDouble(stringInput);
-            return doubleInput;
+            return Double.parseDouble(stringInput);
         } catch (NumberFormatException nfe) {
             println("[ %s ] is an invalid user input!", stringInput);
             println("Try inputting a numeric value!");
@@ -57,8 +56,7 @@ public class Console {
     public Long getLongInput(String prompt, Object... args) {
         String stringInput = getStringInput(prompt, args);
         try {
-            Long longInput = Long.parseLong(stringInput);
-            return longInput;
+            return Long.parseLong(stringInput);
         } catch (NumberFormatException nfe) {
             println("[ %s ] is an invalid user input!", stringInput);
             println("Try inputting an integer value!");
@@ -137,7 +135,7 @@ public class Console {
 
     public void handleReadItems(){
 
-        String input = getKitsOrVodkaString();
+        String input = getItemTypeInput();
 
         if(input.equals("kits")){
             System.out.println(kitsService.toString());
@@ -152,8 +150,7 @@ public class Console {
     }
 
     public void handleUpdateItems(){
-        populateInventoryVodka();
-        String input = getKitsOrVodkaString();
+        String input = getItemTypeInput();
 
         if(input.equals("kits")){
             int id = getIntegerInput("Which ID did you want to update?");
@@ -187,8 +184,38 @@ public class Console {
             }
         }
     }
+    public void handelDelete(){
+        String input = getItemTypeInput();
+        int id = getIntegerInput("Enter the ID of the item you would like to delete");
+        if(input.equals("kits")){
+            deleteKitItem(id);
+            System.out.println(kitsService);
+        }
+        else{
+            deleteVodkaItem(id);
+            System.out.println(vodkaService);
+        }
+    }
 
-    public String getKitsOrVodkaString(){
+    private void deleteKitItem(int id) {
+        if(kitsService.delete(id)){
+            System.out.println("Success");
+        }
+        else{
+            System.out.println("Failed: No item with that ID");
+        }
+    }
+
+    private void deleteVodkaItem(int id) {
+        if(vodkaService.delete(id)){
+            System.out.println("Success");
+        }
+        else{
+            System.out.println("Failed: No item with that ID");
+        }
+    }
+
+    public String getItemTypeInput(){
         String input = getStringInput("Are you updating kits, or vodka").toLowerCase();
         while(!input.equals("kits") && !input.equals("vodka")){
             input = getStringInput("Are you updating kits, or vodka").toLowerCase();

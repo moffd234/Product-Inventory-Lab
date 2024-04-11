@@ -31,10 +31,9 @@ public class App {
                     break;
                 case(3): // Update
                     console.handleUpdateItems();
-
                     break;
                 case(4): // Delete
-                    System.out.println("Delete");
+                    console.handelDelete();
                     break;
                 case(5): // Get Reports
                     System.out.println("Get reports");

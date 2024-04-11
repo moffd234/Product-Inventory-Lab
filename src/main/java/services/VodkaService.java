@@ -1,6 +1,7 @@
 package services;
 
 import models.BottleSize;
+import models.Kit;
 import models.Vodka;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class VodkaService {
         for(Vodka vodka : inventory){
             if(vodka.getId() == id){
                 inventory.remove(vodka);
+                shiftIdsBack(id);
+                nextId -= 1;
                 return true;
             }
         }
@@ -55,6 +58,14 @@ public class VodkaService {
             inv[i] = inventory.get(i);
         }
         return inv;
+    }
+
+    private void shiftIdsBack(int id) {
+        for (Vodka vodka : inventory) {
+            if(vodka.getId() > id) {
+                vodka.setId(vodka.getId() - 1);
+            }
+        }
     }
 
     // Mostly used for testing so far

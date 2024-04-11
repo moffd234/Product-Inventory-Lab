@@ -30,9 +30,12 @@ public class KitsService {
         for(Kit kit: kitsInventory){
             if(kit.getId() == id){
                 kitsInventory.remove(kit);
+                shiftIdsBack(id);
+                nextId -= 1;
                 return true;
             }
         }
+
         return false;
     }
 
@@ -52,7 +55,13 @@ public class KitsService {
         }
         return kits;
     }
-
+    private void shiftIdsBack(int id) {
+        for (Kit kit : kitsInventory) {
+            if(kit.getId() > id) {
+                kit.setId(kit.getId() - 1);
+            }
+        }
+    }
     @Override
     public String toString() {
         return "" + kitsInventory;
