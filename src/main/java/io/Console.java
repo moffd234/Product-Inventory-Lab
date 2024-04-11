@@ -1,7 +1,9 @@
 package io;
 
 import models.BottleSize;
+import models.Kit;
 import models.KitSize;
+import models.Vodka;
 import services.KitsService;
 import services.VodkaService;
 
@@ -95,7 +97,7 @@ public class Console {
     }
 
     public void handleAddItems(){
-        String input = getStringInput("Are you adding kits or vodka?").toLowerCase();
+        String input = getItemTypeInput();
         while(!input.equals("kits") && !input.equals("vodka")){
             input = getStringInput("Are you adding kits or vodka?").toLowerCase();
         }
@@ -135,17 +137,17 @@ public class Console {
 
     public void handleReadItems(){
 
-        String input = getItemTypeInput();
+        String input = getItemTypeInput("both");
 
         if(input.equals("kits")){
-            System.out.println(kitsService.toString());
+            System.out.println(kitsService);
         }
         else if(input.equals("vodka")){
-            System.out.println(vodkaService.toString());
+            System.out.println(vodkaService);
         }
         else{
-            System.out.println(kitsService.toString());
-            System.out.println(vodkaService.toString());
+            System.out.println(kitsService);
+            System.out.println(vodkaService);
         }
     }
 
@@ -223,6 +225,61 @@ public class Console {
         return input;
     }
 
+    public String getItemTypeInput(String str){
+        String input = getStringInput("Are you updating kits, vodka or " + str).toLowerCase();
+        while(!input.equals("kits") && !input.equals("vodka") && !input.equals(str)){
+            input = getStringInput("Are you updating kits, or vodka").toLowerCase();
+        }
+        return input;
+    }
+
+    public void handelReports(){
+        String input = getItemTypeInput("both");
+        populateInventory();
+        if(input.equals("kits")){
+            getKitReport();
+        }
+        else if(input.equals("vodka")){
+            getVodkaReport();
+        }
+        else{
+            getKitReport();
+            getVodkaReport();
+        }
+    }
+
+    public void getKitReport(){
+        System.out.println("----- KIT REPORT -----");
+        for (Kit kit : kitsService.getKitsInventory()) {
+            System.out.println("Kit ID: " + kit.getId());
+            System.out.println("Kit Number: " + kit.getKitNum());
+            System.out.println("Quantity: " + kit.getQuantity());
+            System.out.println("Price: $" + kit.getPrice());
+            System.out.println("Team: " + kit.getTeam());
+            System.out.println("Brand: " + kit.getBrand());
+            System.out.println("Player: " + kit.getPlayer());
+            System.out.println("Size: " + kit.getSize());
+            System.out.println("-----------------------------");
+        }
+    }
+
+    public void getVodkaReport(){
+        System.out.println("----- Vodka Inventory Report -----");
+        for (Vodka vodka : vodkaService.getInventory()) {
+            System.out.println("ID: " + vodka.getId());
+            System.out.println("Brand: " + vodka.getBrand());
+            System.out.println("Proof: " + vodka.getProof());
+            System.out.println("Bottle Size: " + vodka.getBottleSize());
+            System.out.println("Price: $" + vodka.getPrice());
+            System.out.println("Quantity: " + vodka.getQuantity());
+            System.out.println("-----------------------------");
+        }
+    }
+
+    private void populateInventory(){
+        populateInventoryKits();
+        populateInventoryVodka();
+    }
 
     public void populateInventoryKits(){
         for(int i = 0; i < 10; i++){

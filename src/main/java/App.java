@@ -36,7 +36,7 @@ public class App {
                     console.handelDelete();
                     break;
                 case(5): // Get Reports
-                    System.out.println("Get reports");
+                   console.handelReports();
                     break;
                 case(6): // Exit
                     exitFlag = true;
