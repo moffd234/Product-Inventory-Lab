@@ -7,6 +7,7 @@ import models.Vodka;
 import services.KitsService;
 import services.VodkaService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Console {
@@ -273,6 +274,19 @@ public class Console {
             System.out.println("Quantity: " + vodka.getQuantity());
             System.out.println("-----------------------------");
         }
+    }
+
+    public boolean writeToFiles(){
+        populateInventory();
+        try {
+            kitsService.writeToCSV();
+            vodkaService.writeToCSV();
+        }
+        catch (IOException e){
+            System.out.println("IOException reached");
+            return false;
+        }
+        return true;
     }
 
     // The below three function populate the inventory for testing purposes

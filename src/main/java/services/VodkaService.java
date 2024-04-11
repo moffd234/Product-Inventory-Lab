@@ -3,8 +3,13 @@ package services;
 import models.BottleSize;
 import models.Kit;
 import models.Vodka;
+import utils.CSVUtils;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class VodkaService {
     private ArrayList<Vodka> inventory = new ArrayList<>();
@@ -66,6 +71,27 @@ public class VodkaService {
                 vodka.setId(vodka.getId() - 1);
             }
         }
+    }
+
+    public void writeToCSV() throws IOException {
+        String csvFile = "/Users/dan/Dev/Zipcode/Week 5/Product-Inventory-Lab/Vodka.csv";
+        FileWriter writer = new FileWriter(csvFile);
+
+        CSVUtils.writeLine(writer, new ArrayList<>(Arrays.asList(String.valueOf(nextId))));  // (2)
+
+        for (Vodka v : inventory) {
+            List<String> list = new ArrayList<>(); // (3)
+            list.add(String.valueOf(v.getBrand()));
+            list.add(String.valueOf(v.getProof()));
+            list.add(String.valueOf(v.getBottleSize()));
+            list.add(String.valueOf(v.getPrice()));
+            list.add(String.valueOf(v.getQuantity()));
+            CSVUtils.writeLine(writer, list);  // (4)
+        }
+
+        // (5)
+        writer.flush();
+        writer.close();
     }
 
     // Mostly used for testing so far

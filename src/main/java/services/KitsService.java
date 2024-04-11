@@ -2,8 +2,13 @@ package services;
 
 import models.Kit;
 import models.KitSize;
+import utils.CSVUtils;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class KitsService {
     private ArrayList<Kit> kitsInventory = new ArrayList<>();
@@ -65,5 +70,29 @@ public class KitsService {
     @Override
     public String toString() {
         return "" + kitsInventory;
+    }
+
+    public void writeToCSV() throws IOException {
+        String csvFile = "/Users/dan/Dev/Zipcode/Week 5/Product-Inventory-Lab/Kits.csv";
+        FileWriter writer = new FileWriter(csvFile);
+
+        CSVUtils.writeLine(writer, new ArrayList<>(Arrays.asList(String.valueOf(nextId))));  // (2)
+
+        for (Kit k : kitsInventory) {
+            List<String> list = new ArrayList<>(); // (3)
+            list.add(String.valueOf(k.getId()));
+            list.add(String.valueOf(k.getKitNum()));
+            list.add(String.valueOf(k.getQuantity()));
+            list.add(String.valueOf(k.getPrice()));
+            list.add(k.getTeam());
+            list.add(k.getBrand());
+            list.add(k.getPlayer());
+            list.add(String.valueOf(k.getSize()));
+            CSVUtils.writeLine(writer, list);  // (4)
+        }
+
+        // (5)
+        writer.flush();
+        writer.close();
     }
 }
