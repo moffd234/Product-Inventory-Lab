@@ -101,14 +101,14 @@ public class Console {
         while(!input.equals("kits") && !input.equals("vodka")){
             input = getStringInput("Are you adding kits or vodka?").toLowerCase();
         }
+
+        int numToAdd = getIntegerInput("How many would you like to add?");
         if(input.equals("kits")){
-            int numToAdd = getIntegerInput("How many would you like to add?");
             for(int i = 0; i < numToAdd; i++) {
                 addKit();
             }
         }
         else{
-            int numToAdd = getIntegerInput("How many would you like to add?");
             for(int i = 0; i < numToAdd; i++) {
                 addVodka();
             }
@@ -179,7 +179,7 @@ public class Console {
                 double price = getDoubleInput("Enter Vodka price");
                 int quantity = getIntegerInput("Enter quantity");
                 vodkaService.create(brand, proof, bottleSize, price, quantity, id);
-                System.out.println(vodkaService.toString());
+                System.out.println(vodkaService);
             }
             else{
                 System.out.println("There is no vodka item with that id");
@@ -235,7 +235,6 @@ public class Console {
 
     public void handelReports(){
         String input = getItemTypeInput("both");
-        populateInventory();
         if(input.equals("kits")){
             getKitReport();
         }
@@ -275,6 +274,8 @@ public class Console {
             System.out.println("-----------------------------");
         }
     }
+
+    // The below three function populate the inventory for testing purposes
 
     private void populateInventory(){
         populateInventoryKits();
