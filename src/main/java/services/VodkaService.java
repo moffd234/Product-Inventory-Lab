@@ -97,7 +97,6 @@ public class VodkaService {
     // Mostly used for testing so far
     @Override
     public String toString() {
-        return "{" + inventory +
-                '}';
+        return "{" + inventory + '}';
     }
 }

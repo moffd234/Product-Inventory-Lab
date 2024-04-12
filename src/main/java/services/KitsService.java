@@ -4,6 +4,8 @@ import models.Kit;
 import models.KitSize;
 import utils.CSVUtils;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +15,11 @@ import java.util.List;
 public class KitsService {
     private ArrayList<Kit> kitsInventory = new ArrayList<>();
     private int nextId = 1;
+
+    public KitsService(){
+        loadData();
+    }
+
 
     public Kit create(int kitNum, int quantity, double price, String team,
                       String brand, String player, KitSize kitSize){
@@ -76,10 +83,10 @@ public class KitsService {
         String csvFile = "/Users/dan/Dev/Zipcode/Week 5/Product-Inventory-Lab/Kits.csv";
         FileWriter writer = new FileWriter(csvFile);
 
-        CSVUtils.writeLine(writer, new ArrayList<>(Arrays.asList(String.valueOf(nextId))));  // (2)
+        CSVUtils.writeLine(writer, new ArrayList<>(Arrays.asList(String.valueOf(nextId))));
 
         for (Kit k : kitsInventory) {
-            List<String> list = new ArrayList<>(); // (3)
+            List<String> list = new ArrayList<>();
             list.add(String.valueOf(k.getId()));
             list.add(String.valueOf(k.getKitNum()));
             list.add(String.valueOf(k.getQuantity()));
@@ -88,11 +95,42 @@ public class KitsService {
             list.add(k.getBrand());
             list.add(k.getPlayer());
             list.add(String.valueOf(k.getSize()));
-            CSVUtils.writeLine(writer, list);  // (4)
+            CSVUtils.writeLine(writer, list);
         }
 
-        // (5)
         writer.flush();
         writer.close();
+    }
+    private void loadData(){
+        // (1)
+        String csvFile = "/Users/dan/Dev/Zipcode/Week 5/Product-Inventory-Lab/Kits.csv";
+        String line = "";
+        String csvSplitBy = ",";
+
+        // (2)
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            nextId = Integer.parseInt(br.readLine());  // (3)
+
+            while ((line = br.readLine()) != null) {
+                // split line with comma
+                String[] beer = line.split(csvSplitBy);
+
+                // (4)
+                int id = Integer.parseInt(beer[0]);
+                int kitNum = Integer.parseInt(beer[1]);
+                int qty = Integer.parseInt(beer[2]);
+                double price = Double.parseDouble(beer[3]);
+                String team = beer[4];
+                String brand = beer[5];
+                String player = beer[6];
+                KitSize size = KitSize.valueOf(beer[7]);
+
+
+                // (5)
+                kitsInventory.add(new Kit(id, kitNum, qty, price, team, brand, player, size));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

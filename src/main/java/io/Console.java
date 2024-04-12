@@ -277,7 +277,7 @@ public class Console {
     }
 
     public boolean writeToFiles(){
-        populateInventory();
+
         try {
             kitsService.writeToCSV();
             vodkaService.writeToCSV();
