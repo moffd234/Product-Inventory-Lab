@@ -1,13 +1,14 @@
 package services;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import models.Kit;
 import models.KitSize;
 import utils.CSVUtils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ public class KitsService {
     private int nextId = 1;
 
     public KitsService(){
-        loadData();
+        loadCSVData();
     }
 
 
@@ -101,7 +102,7 @@ public class KitsService {
         writer.flush();
         writer.close();
     }
-    private void loadData(){
+    private void loadCSVData(){
         // (1)
         String csvFile = "/Users/dan/Dev/Zipcode/Week 5/Product-Inventory-Lab/Kits.csv";
         String line = "";
@@ -132,5 +133,18 @@ public class KitsService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void loadJSONData() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        this.kitsInventory = objectMapper.readValue(
+                new File("kits.json"), new TypeReference<ArrayList<Kit>>(){});
+
+    }
+
+    public void writeJSONData() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        writer.writeValue(new File("kits.json"), kitsInventory);
     }
 }

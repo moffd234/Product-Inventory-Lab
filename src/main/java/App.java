@@ -40,7 +40,7 @@ public class App {
                     break;
                 case(6): // Exit
                     exitFlag = true;
-                    console.writeToFiles();
+                    console.writeToJSONFiles();
                     break;
                 default:
                     System.out.println("Incorrect choice");

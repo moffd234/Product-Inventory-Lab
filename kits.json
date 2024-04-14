@@ -1,0 +1,91 @@
+[ {
+  "id" : 1,
+  "kitNum" : 1,
+  "quantity" : 0,
+  "price" : 0.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 2,
+  "kitNum" : 2,
+  "quantity" : 10,
+  "price" : 20.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 3,
+  "kitNum" : 3,
+  "quantity" : 20,
+  "price" : 40.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 4,
+  "kitNum" : 4,
+  "quantity" : 30,
+  "price" : 60.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 5,
+  "kitNum" : 5,
+  "quantity" : 40,
+  "price" : 80.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 6,
+  "kitNum" : 6,
+  "quantity" : 50,
+  "price" : 100.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 7,
+  "kitNum" : 7,
+  "quantity" : 60,
+  "price" : 120.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 8,
+  "kitNum" : 8,
+  "quantity" : 70,
+  "price" : 140.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 9,
+  "kitNum" : 9,
+  "quantity" : 80,
+  "price" : 160.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+}, {
+  "id" : 10,
+  "kitNum" : 10,
+  "quantity" : 90,
+  "price" : 180.0,
+  "team" : "Barcelona",
+  "brand" : "Adidas",
+  "player" : "Silva",
+  "size" : "MEDIUM"
+} ]

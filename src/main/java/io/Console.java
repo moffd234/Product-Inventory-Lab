@@ -276,13 +276,23 @@ public class Console {
         }
     }
 
-    public boolean writeToFiles(){
+    public boolean writeToCSVFiles(){
 
         try {
             kitsService.writeToCSV();
             vodkaService.writeToCSV();
         }
         catch (IOException e){
+            System.out.println("IOException reached");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean writeToJSONFiles(){
+        try {
+            kitsService.writeJSONData();
+        } catch (IOException e) {
             System.out.println("IOException reached");
             return false;
         }
