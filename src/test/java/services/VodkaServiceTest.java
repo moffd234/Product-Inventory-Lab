@@ -76,7 +76,7 @@ public class VodkaServiceTest {
         Vodka actual = vs.find(1000);
 
         Assert.assertNull(actual);
-    }
+    } 
 
     @Test
     public void testFind(){
