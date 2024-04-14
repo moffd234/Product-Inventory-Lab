@@ -1,10 +1,10 @@
 package services;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import models.BottleSize;
-import models.Kit;
 import models.Vodka;
 import utils.CSVUtils;
 
@@ -19,6 +19,14 @@ public class VodkaService {
     private ArrayList<Vodka> inventory = new ArrayList<>();
     private int nextId = 1;
 
+    public VodkaService(){
+        try {
+            readJSON();
+        } catch (IOException e) {
+            System.out.println("IOException reached");
+            e.printStackTrace();
+        }
+    }
     public Vodka create(String brand, int proof, BottleSize bottleSize, double price, int quantity) {
 
         Vodka newVodka = new Vodka(brand, proof, bottleSize, price, quantity, nextId++);
@@ -102,6 +110,11 @@ public class VodkaService {
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         writer.writeValue(new File("vodka.json"), inventory);
+    }
+    public void readJSON() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        this.inventory = objectMapper.readValue(
+                new File("vodka.json"), new TypeReference<ArrayList<Vodka>>(){});
     }
 
     // Mostly used for testing so far

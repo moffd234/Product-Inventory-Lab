@@ -1,5 +1,8 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Vodka {
     private String brand;
     private int proof;
@@ -9,7 +12,13 @@ public class Vodka {
     private int id;
 
 
-    public Vodka(String brand, int proof, BottleSize bottleSize, double price, int quantity, int id) {
+    @JsonCreator
+    public Vodka(@JsonProperty("brand") String brand,
+                 @JsonProperty("proof") int proof,
+                 @JsonProperty("bottleSize") BottleSize bottleSize,
+                 @JsonProperty("price") double price,
+                 @JsonProperty("quantity") int quantity,
+                 @JsonProperty("id") int id) {
         this.brand = brand;
         this.proof = proof;
         this.bottleSize = bottleSize;

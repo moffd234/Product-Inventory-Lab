@@ -292,7 +292,6 @@ public class Console {
     public boolean writeToJSONFiles(){
         try {
             kitsService.writeJSONData();
-            populateInventoryVodka();
             vodkaService.writeToJSON();
         } catch (IOException e) {
             System.out.println("IOException reached");
