@@ -50,7 +50,7 @@ public class VodkaServiceTest {
     @Test
     public void testRemove(){
         int expectedSize = 9;
-        populateInventory();
+//        populateInventory();
 
         boolean deleted = vs.delete(2);
         int actualSize = vs.getInventory().size();
@@ -61,7 +61,7 @@ public class VodkaServiceTest {
     @Test
     public void testRemoveFalse(){
         int expectedSize = 10;
-        populateInventory();
+//        populateInventory();
 
         boolean deleted = vs.delete(2000);
         int actualSize = vs.getInventory().size();
@@ -72,25 +72,25 @@ public class VodkaServiceTest {
 
     @Test
     public void testFindNull(){
-        Vodka expected = vs.create("Smirnoff", 80, BottleSize.HANDLE, 23.00, 100);
 
-        Vodka actual = vs.find(1);
+        Vodka actual = vs.find(1000);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertNull(actual);
     }
 
     @Test
     public void testFind(){
-        Vodka actual = vs.find(1);
+        Vodka expected = vs.create("Smirnoff", 100, BottleSize.PINT, 20.99, 100, 10);
+        Vodka actual = vs.find(10);
 
-        Assert.assertNull(actual);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testFindAll(){
         Vodka[] expected = new Vodka[10];
         for(int i = 0; i < 10; i++){
-            Vodka vdk = vs.create("Smirnoff", i * 18, BottleSize.HANDLE, i * 15, 100);
+            Vodka vdk = vs.find(i + 1);
             expected[i] = vdk;
         }
 
