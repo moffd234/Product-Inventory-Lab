@@ -1,10 +1,14 @@
 package services;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import models.BottleSize;
 import models.Kit;
 import models.Vodka;
 import utils.CSVUtils;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -92,6 +96,12 @@ public class VodkaService {
         // (5)
         writer.flush();
         writer.close();
+    }
+
+    public void writeToJSON() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        writer.writeValue(new File("vodka.json"), inventory);
     }
 
     // Mostly used for testing so far
