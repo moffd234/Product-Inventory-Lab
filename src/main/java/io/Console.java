@@ -219,17 +219,17 @@ public class Console {
     }
 
     public String getItemTypeInput(){
-        String input = getStringInput("Are you updating kits, or vodka").toLowerCase();
+        String input = getStringInput("Are you handling kits, or vodka").toLowerCase();
         while(!input.equals("kits") && !input.equals("vodka")){
-            input = getStringInput("Are you updating kits, or vodka").toLowerCase();
+            input = getStringInput("Are you handling kits, or vodka").toLowerCase();
         }
         return input;
     }
 
     public String getItemTypeInput(String str){
-        String input = getStringInput("Are you updating kits, vodka or " + str).toLowerCase();
+        String input = getStringInput("Are you handling kits, vodka or " + str).toLowerCase();
         while(!input.equals("kits") && !input.equals("vodka") && !input.equals(str)){
-            input = getStringInput("Are you updating kits, or vodka").toLowerCase();
+            input = getStringInput("Are you handling kits, vodka or " + str).toLowerCase();
         }
         return input;
     }
