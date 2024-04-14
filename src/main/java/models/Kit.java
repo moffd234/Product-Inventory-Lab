@@ -1,5 +1,8 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Kit {
     private int id;
     private int kitNum;
@@ -10,8 +13,15 @@ public class Kit {
     private String player;
     private KitSize kitSize;
 
-    public Kit(int id, int kitNum, int quantity, double price, String team,
-               String brand, String player, KitSize kitSize) {
+    @JsonCreator
+    public Kit(@JsonProperty("id") int id,
+               @JsonProperty("kitNum") int kitNum,
+               @JsonProperty("quantity") int quantity,
+               @JsonProperty("price") double price,
+               @JsonProperty("team") String team,
+               @JsonProperty("brand") String brand,
+               @JsonProperty("player") String player,
+               @JsonProperty("kitSize") KitSize kitSize) {
         this.id = id;
         this.kitNum = kitNum;
         this.quantity = quantity;

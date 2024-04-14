@@ -18,7 +18,12 @@ public class KitsService {
     private int nextId = 1;
 
     public KitsService(){
-        loadCSVData();
+        try {
+            loadJSONData();
+        } catch (IOException e) {
+            System.out.println("IOException reached");
+            e.printStackTrace();
+        }
     }
 
 

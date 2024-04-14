@@ -56,7 +56,7 @@ public class KitsServiceTest {
     @Test
     public void deleteTest() {
         int expectedSize = 9;
-        populateInventory();
+//        populateInventory();
 
         boolean deleted = ks.delete(2);
         int actualSize = ks.getKitsInventory().size();
@@ -68,7 +68,7 @@ public class KitsServiceTest {
     @Test
     public void deleteTestFalse() {
         int expectedSize = 10;
-        populateInventory();
+//        populateInventory();
 
         boolean deleted = ks.delete(50);
         int actualSize = ks.getKitsInventory().size();
@@ -83,7 +83,7 @@ public class KitsServiceTest {
         Kit expected = ks.create(10, 10, 20,
                 "Philadelphia Union", "Nike", "Gazdag", KitSize.LARGE);
 
-        Kit actual = ks.find(1);
+        Kit actual = ks.find(10);
         Assert.assertEquals(expected, actual);
 
     }
@@ -91,7 +91,7 @@ public class KitsServiceTest {
     @Test
     public void testFindNull() {
 
-        Kit actual = ks.find(1);
+        Kit actual = ks.find(100);
 
         Assert.assertNull(actual);
     }
@@ -100,8 +100,7 @@ public class KitsServiceTest {
     public void testFindAll(){
         Kit[] expected = new Kit[10];
         for(int i = 0; i < 10; i++){
-            Kit tempKit = ks.create(i + 1, i * 10, i * 20,
-                    "Barcelona", "Adidas", "Silva", KitSize.MEDIUM);
+            Kit tempKit = ks.find(i + 1);
             expected[i] = tempKit;
         }
 
