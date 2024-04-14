@@ -81,7 +81,7 @@ public class KitsServiceTest {
     public void testFind() {
 
         Kit expected = ks.create(10, 10, 20,
-                "Philadelphia Union", "Nike", "Gazdag", KitSize.LARGE);
+                "Philadelphia Union", "Nike", "Gazdag", KitSize.LARGE, 10);
 
         Kit actual = ks.find(10);
         Assert.assertEquals(expected, actual);
